@@ -20,6 +20,8 @@ firebase.firestore();
 
 export default firebase;
 
+Vue.config.devtools = true;
+
 new Vue({
   router,
   store,
