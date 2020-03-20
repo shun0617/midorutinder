@@ -23,6 +23,4 @@ export default new Vuex.Store({
       commit('changeUserData',user)
     }
   },
-  modules: {
-  }
 })

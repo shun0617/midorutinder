@@ -7,16 +7,15 @@ admin.initializeApp(functions.config().firebase);
 
 exports.writeUrl =
 functions.storage.object().onFinalize((object) => {
-    const bucketName =
-    'project-id.appspot.com';
+    const bucketName = 'project-id.appspot.com';
     const filePath = object.name;
-    const name =
-    filePath.split('.').shift();
+    const name = filePath.split('.').shift();
     const db = admin.firestore();
 
     db.collection('people').add({
         name: name,
-        url:'https://firebasestorage.googleapis.com/v0/b/${bucketName}/o/${encodeURIComponent(filePath)}?alt=media',
+        url:
+        `https://firebasestorage.googleapis.com/v0/b/${bucketName}/o/${encodeURIComponent(filePath)}?alt=media`,
     }).then(() => console.log('Done'));
 });
 
